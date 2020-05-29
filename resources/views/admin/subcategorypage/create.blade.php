@@ -133,6 +133,14 @@
       				  <img src="#" id="three" >
       				</label>
               </div>
+              <div class="col-lg-4">
+                <lebel>Image Four <span class="tx-danger">*</span></lebel>
+                <label class="custom-file">
+                <input type="file" id="file" class="custom-file-input" name="image_four" onchange="readURL3(this);" required="" accept="/image">
+                <span class="custom-file-control"></span>
+                <img src="#" id="four" >
+              </label>
+              </div>
             </div><!-- row -->
             <br><hr>
             <h6>Pages Documentory</h6>
@@ -140,16 +148,29 @@
             <div class="row">
             	<div class="col-lg-4">
             		<label class="ckbox">
-					  <input type="checkbox" name="single_image" value="1">
-					  <span>Single Image</span>
+					  <input type="checkbox" name="image_1" value="1">
+					  <span>Image 1</span>
 					</label>
             	</div>
               <div class="col-lg-4">
                 <label class="ckbox">
-            <input type="checkbox" name="product" value="1">
-            <span>product</span>
+            <input type="checkbox" name="image_2" value="1">
+            <span>Image 2</span>
           </label>
-              </div>              
+              </div>
+
+              <div class="col-lg-4">
+                <label class="ckbox">
+            <input type="checkbox" name="product_1" value="1">
+            <span>Product 1</span>
+          </label>
+              </div> 
+              <div class="col-lg-4">
+                <label class="ckbox">
+            <input type="checkbox" name="product_2" value="1">
+            <span>Product 2</span>
+          </label>
+              </div>               
             </div>
 
             <br><br><hr>
@@ -231,6 +252,20 @@
           var reader = new FileReader();
           reader.onload = function (e) {
               $('#three')
+                  .attr('src', e.target.result)
+                  .width(80)
+                  .height(80);
+          };
+          reader.readAsDataURL(input.files[0]);
+      }
+   }
+</script>
+<script type="text/javascript">
+  function readURL3(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+              $('#four')
                   .attr('src', e.target.result)
                   .width(80)
                   .height(80);

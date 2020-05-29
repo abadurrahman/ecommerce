@@ -103,9 +103,15 @@
 				</label>
               </div>
               <div class="col-lg-4">
-              	<lebel>Image Three <span class="tx-danger">*</span></lebel>
+                <lebel>Image Three <span class="tx-danger">*</span></lebel>
+                <label class="custom-file">
+          <img src="{{ URL::to($subcategorypage->image_three) }}" style="height: 80px; width: 80px;" >
+        </label>
+              </div>
+              <div class="col-lg-4">
+              	<lebel>Image Four <span class="tx-danger">*</span></lebel>
               	<label class="custom-file">
-				  <img src="{{ URL::to($subcategorypage->image_three) }}" style="height: 80px; width: 80px;" >
+				  <img src="{{ URL::to($subcategorypage->image_four) }}" style="height: 80px; width: 80px;" >
 				</label>
               </div>
             </div><!-- row -->
@@ -113,24 +119,44 @@
             <div class="row">
             	<div class="col-lg-4">
             		<label class="">
-            		@if($subcategorypage->single_image == 1)
+            		@if($subcategorypage->image_1 == 1)
 					  <span class="badge badge-success">Active</span> |
 					@else
 					<span class="badge badge-danger">Inactive</span> |
 					@endif
-					  <span>Single Image</span>
+					  <span>Image 1</span>
 					</label>
             	</div>
+              <div class="col-lg-4">
+                <label class="">
+                @if($subcategorypage->image_2 == 1)
+            <span class="badge badge-success">Active</span> |
+          @else
+          <span class="badge badge-danger">Inactive</span> |
+          @endif
+            <span>Image 2</span>
+          </label>
+              </div>
             	<div class="col-lg-4">
             		<label >
-					  @if($subcategorypage->product == 1)
+					  @if($subcategorypage->product_1 == 1)
 					  <span class="badge badge-success">Active</span> |
 					@else
 					<span class="badge badge-danger">Inactive</span> |
 					@endif
-					  <span>Product</span>
+					  <span>Product 1</span>
 					</label>
             	</div>
+              <div class="col-lg-4">
+                <label >
+            @if($subcategorypage->product_2 == 1)
+            <span class="badge badge-success">Active</span> |
+          @else
+          <span class="badge badge-danger">Inactive</span> |
+          @endif
+            <span>Product 2</span>
+          </label>
+              </div>
             </div>
 
 

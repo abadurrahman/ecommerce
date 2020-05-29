@@ -18,15 +18,18 @@ class ProductdetailsController extends Controller
   
       
       $color=$product->product_color;
-      $product_col = explode(',', $color);
+      $product_color = explode(',', $color);
 
       $size=$product->product_size;
       $product_size = explode(',', $size);
 
-      return  view('pages.product_details',compact('product','product_col','product_size'));
+      return  view('pages.product_details',compact('product','product_color','product_size'));
     }
 
-    /*public function AddCart(Request $request,$id)
+
+
+
+    public function AddCart(Request $request,$id)
     {
     	 $product=DB::table('products')->where('id',$id)->first();
     	  $data=array();
@@ -35,10 +38,10 @@ class ProductdetailsController extends Controller
     	                $data['name']=$product->product_name;
     	                $data['qty']=$request->qty;
     	                $data['price']= $product->selling_price;          
-    	 				$data['weight']=1;
+    	 				        $data['weight']=1;
     	                $data['options']['image']=$product->image_one;
-                        $data['options']['color']=$request->color;
-                        $data['options']['size']=$request->size;
+                      $data['options']['color']=$request->color;
+                      $data['options']['size']=$request->size;
     	               Cart::add($data);
     	                $notification=array(
                            'messege'=>'Successfully Added',
@@ -46,15 +49,15 @@ class ProductdetailsController extends Controller
                          );
                        return Redirect()->to('/')->with($notification);
     	   }else{
-    	                 $data['id']=$id;
+    	                $data['id']=$id;
     	                $data['name']=$product->product_name;
     	                $data['qty']=$request->qty;
     	                $data['price']= $product->discount_price;          
-    	 				$data['weight']=1;
+    	 			        	$data['weight']=1;
     	                $data['options']['image']=$product->image_one;
-                        $data['options']['color']=$request->color;
-                        $data['options']['size']=$request->size;
-    	                Cart::add($data);  
+                      $data['options']['color']=$request->color;
+                      $data['options']['size']=$request->size;
+    	               Cart::add($data);  
     	                $notification=array(
                               'messege'=>'Successfully Added',
                              'alert-type'=>'success'
@@ -69,6 +72,6 @@ class ProductdetailsController extends Controller
          $brands= DB::table('products')->where('subcategory_id',$id)->select('brand_id')->groupBy('brand_id')->get();
          
          return view('pages.all_products',compact('products','brands'));
-    }*/
+    }
 
 }

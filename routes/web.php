@@ -135,6 +135,14 @@ Route::post('update/tag/{id}','Admin\PostController@updatetag');
 
 
 
+//blog_caategory
+Route::get('admin/settings', 'SiteController@create')->name('admin.settings');     
+Route::post('admin/store/postcategory', 'SiteController@storesetting')->name('store.setting');
+Route::get('admin/sitpage', 'SiteController@index')->name('sitpage');
+Route::get('delete/setting/{id}','SiteController@deletesetting');
+Route::get('edit/setting/{id}','SiteController@editsetting');
+Route::post('update/setting/{id}','SiteController@Updatesetting');
+
 
 
 
@@ -152,23 +160,32 @@ Route::get('get/subcategory/{category_id}','Admin\ProductController@GetSubcat');
 //cart
 Route::get('add/to/cart/{id}','CartController@AddCart');
 Route::get('check','CartController@check');
-//Route::get('products/cart','CartController@showCart')->name('show.cart');
-//Route::get('remove/cart/{rowId}','CartController@removeCart');
-//Route::post('update/cart/item','CartController@UpdateCart')->name('update.cartitem');
-//Route::get('cart/product/view/{id}','CartController@ViewProduct');
-//Route::post('insert/into/cart/','CartController@InsertCart')->name('insert.into.cart');
-//Route::get('user/checkout/','CartController@Checkout')->name('user.checkout');
-//Route::get('user/wishlist/','CartController@Wishlist')->name('user.wishlist');
-//Route::post('user/apply/coupon/','CartController@Coupon')->name('apply.coupon');
-//Route::get('coupon/remove/','CartController@CouponRemove')->name('coupon.remove');
-//Route::get('payment/page/','CartController@PymentPage')->name('payment.step');
+Route::get('products/cart','CartController@showCart')->name('show.cart');
+Route::get('remove/cart/{rowId}','CartController@removeCart');
+Route::post('update/cart/item','CartController@UpdateCart')->name('update.cartitem');
+Route::get('cart/product/view/{id}','CartController@ViewProduct');
+Route::post('insert/into/cart/','CartController@InsertCart')->name('insert.into.cart');
+Route::get('user/checkout/','CartController@Checkout');
+Route::get('user/wishlist/','CartController@Wishlist')->name('user.wishlist');
+Route::post('user/apply/coupon/','CartController@Coupon')->name('apply.coupon');
+Route::get('coupon/remove/','CartController@CouponRemove')->name('coupon.remove');
+Route::get('payment/page/','CartController@PymentPage')->name('payment.step');
 
 
+//payment methods
+Route::post('user/payment/process/','PaymentController@payment')->name('payment.process');
+Route::post('user/stripe/charge/','PaymentController@STripeCharge')->name('stripe.charge');
+
+Route::get('success/list/','PaymentController@SuccessList')->name('success.orderlist');
+Route::get('request/return/{id}','PaymentController@RequestReturn');
 
 
+//blog routes
 
+Route::get('blog/post','BlogController@blog')->name('blog.post');
 
-
+Route::get('language/bangla','BlogController@Bangla')->name('language.bangla');
+Route::get('language/english','BlogController@English')->name('language.english');
 
 
 
@@ -176,10 +193,10 @@ Route::get('check','CartController@check');
 //frontedn all routesa are here--------
 Route::post('store/newslater', 'FrontendController@StoreNewslater')->name('store.newslater');
 
- Route::get('/product/details/{id}/{product_name}', 'ProductdetailsController@ProductView');
- //Route::post('/cart/product/add/{id}', 'ProductController@AddCart');
+Route::get('/product/details/{id}/{product_name}', 'ProductdetailsController@ProductView');
+Route::post('/cart/product/add/{id}', 'ProductdetailsController@AddCart');
 
-
+ Route::get('/products/{id}', 'ProductdetailsController@productsView');
 
 
 

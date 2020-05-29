@@ -37,7 +37,7 @@
                                             @endphp
 
                                             @foreach($subcategory as $row)
-                                            <li><a href="mens.html">{{  $row->subcategory_name }}</a></li>
+                                            <li><a href="{{ url('products/'.$row->id) }}">{{  $row->subcategory_name }}</a></li>
                                             @endforeach
                                         </ul>
                                     </div>
@@ -49,7 +49,7 @@
                     @endforeach  
                     
                     <li class=" menu__item"><a class="menu__link" href="electronics.html">Electronics</a></li>
-                    <li class=" menu__item"><a class="menu__link" href="codes.html">Short Codes</a></li>
+                    <li class=" menu__item"><a class="menu__link" href="{{route('blog.post')}}">Blog</a></li>
                     <li class=" menu__item"><a class="menu__link" href="contact.html">contact</a></li>
                   </ul>
                 </div>
@@ -58,10 +58,10 @@
         </div>
         <div class="top_nav_right">
             <div class="cart box_1">
-                        <a href="checkout.html">
+                        <a href="{{ route('show.cart') }}">
                             <h3> <div class="total">
                                 <i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>
-                                <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> {{ Cart::count() }})</div>
+                                <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)</div>
                                 
                             </h3>
                         </a>

@@ -125,20 +125,36 @@
             <div class="row">
             	<div class="col-lg-4">
             		<label class="ckbox">
-					  <input type="checkbox" name="single_image" value="1" <?php if ($subcategorypage->single_image == 1) {
+					  <input type="checkbox" name="image_1" value="1" <?php if ($subcategorypage->image_1 == 1) {
 					  	echo "checked";
 					  }?> >
-					  <span>Single Imagee</span>
+					  <span>Imagee 1</span>
 					</label>
             	</div>
+              <div class="col-lg-4">
+                <label class="ckbox">
+            <input type="checkbox" name="image_2" value="1" <?php if ($subcategorypage->image_2 == 1) {
+              echo "checked";
+            }?> >
+            <span>Imagee 2</span>
+          </label>
+              </div>
             	<div class="col-lg-4">
             		<label class="ckbox">
-					  <input type="checkbox" name="product" value="1" <?php if ($subcategorypage->product == 1) {
+					  <input type="checkbox" name="product_1" value="1" <?php if ($subcategorypage->product_1 == 1) {
 					  	echo "checked";
 					  }?>>
-					  <span>Product</span>
+					  <span>Product 1</span>
 					</label>
             	</div>
+              <div class="col-lg-4">
+                <label class="ckbox">
+            <input type="checkbox" name="product_2" value="1" <?php if ($subcategorypage->product_2 == 1) {
+              echo "checked";
+            }?>>
+            <span>Product 2</span>
+          </label>
+              </div>
 
             </div>
 
@@ -187,19 +203,34 @@
                	 	<img src="{{ URL::to($subcategorypage->image_two) }}" style="height: 80px; width: 80px;">
                	 </div>
                </div>
+               <div class="row">
+                 <div class="col-lg-6 col-sm-6">
+                  <lebel>Image Three <span class="tx-danger">*</span></lebel><br>
+                     <label class="custom-file">
+                <input type="file" id="file" class="custom-file-input" name="image_three" onchange="readURL2(this);"  accept="image">
+                <input type="hidden" name="old_three" value="{{ $subcategorypage->image_three }}">
+                <span class="custom-file-control"></span>
+                <img src="#" id="three" >
+              </label>
+                 </div>
+                 <div class="col-lg-6 col-sm-6">
+                  <img src="{{ URL::to($subcategorypage->image_three) }}" style="height: 80px; width: 80px;">
+                 </div>
+               </div>
                 <div class="row">
-               	 <div class="col-lg-6 col-sm-6">
-               	 	<lebel>Image Three <span class="tx-danger">*</span></lebel><br>
-              	     <label class="custom-file">
-      				  <input type="file" id="file" class="custom-file-input" name="image_three" onchange="readURL2(this);"  accept="image">
-      				  <span class="custom-file-control"></span>
-      				  <img src="#" id="three" >
-      				   <input type="hidden" name="old_three" value="{{ $subcategorypage->image_three }}">
-      				</label>
-               	 </div>
-               	 <div class="col-lg-6 col-sm-6">
-               	 	<img src="{{ URL::to($subcategorypage->image_three) }}" style="height: 80px; width: 80px;">
-               	 </div>
+                 <div class="col-lg-6 col-sm-6">
+                  <lebel>Image Four <span class="tx-danger">*</span></lebel><br>
+                     <label class="custom-file">
+                <input type="file" id="file" class="custom-file-input" name="image_four" onchange="readURL3(this);"  accept="image">
+                <input type="hidden" name="old_four" value="{{ $subcategorypage->image_four }}">
+                <span class="custom-file-control"></span>
+                <img src="#" id="four" >
+              </label>
+                 </div>
+                 <div class="col-lg-6 col-sm-6">
+                  <img src="{{ URL::to($subcategorypage->image_four) }}" style="height: 80px; width: 80px;">
+                 </div>
+               </div>
                	 <button type="submit" class="btn btn-sm btn-warning">Update Photo</button>
                </form>
 
@@ -279,6 +310,20 @@
           var reader = new FileReader();
           reader.onload = function (e) {
               $('#three')
+                  .attr('src', e.target.result)
+                  .width(80)
+                  .height(80);
+          };
+          reader.readAsDataURL(input.files[0]);
+      }
+   }
+</script>
+<script type="text/javascript">
+  function readURL3(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+              $('#four')
                   .attr('src', e.target.result)
                   .width(80)
                   .height(80);

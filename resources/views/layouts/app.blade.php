@@ -21,6 +21,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- pignose css -->
 <link href="{{asset('public/frontend/css/pignose.layerslider.css')}}" rel="stylesheet" type="text/css" media="all" />
 
+<link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/css/main_styles.css') }}">
+
 
 <!-- //pignose css -->
 <link href="{{asset('public/frontend/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />

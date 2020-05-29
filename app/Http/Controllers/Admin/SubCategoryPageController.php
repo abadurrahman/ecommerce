@@ -57,14 +57,17 @@ class SubCategoryPageController extends Controller
     	$data['selling_price']=$request->selling_price;
     	$data['product_details']=$request->product_details;
     	$data['video_link']=$request->video_link;
-    	$data['single_image']=$request->single_image;
-    	$data['product']=$request->product;
+    	$data['image_1']=$request->image_1;
+        $data['image_2']=$request->image_2;
+        $data['product_1']=$request->product_1;
+        $data['product_2']=$request->product_2;
     	$data['status']=1;
     	$image_one=$request->image_one;
     	$image_two=$request->image_two;
     	$image_three=$request->image_three;
+      $image_four=$request->image_four;
 
-    if($image_one && $image_two && $image_three){
+    if($image_one && $image_two && $image_three && $image_four){
             $image_one_name= hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
                 Image::make($image_one)->resize(230,300)->save('public/media/subcategorypage/'.$image_one_name);
                 $data['image_one']='public/media/subcategorypage/'.$image_one_name;
@@ -77,6 +80,11 @@ class SubCategoryPageController extends Controller
                 Image::make($image_three)->resize(230,300)->save('public/media/subcategorypage/'.$image_three_name);
                 $data['image_three']='public/media/subcategorypage/'.$image_three_name; 
                 
+            
+            $image_four_name= hexdec(uniqid()).'.'.$image_four->getClientOriginalExtension();
+                Image::make($image_four)->resize(230,300)->save('public/media/subcategorypage/'.$image_four_name);
+                $data['image_four']='public/media/subcategorypage/'.$image_four_name;
+
                 $subcategorypage=DB::table('subcategorypages')
                           ->insert($data);
                     $notification=array(
@@ -116,9 +124,11 @@ class SubCategoryPageController extends Controller
         $image1=$product->image_one;
         $image2=$product->image_two;
         $image3=$product->image_three;
+        $image4=$product->image_four;
         unlink($image1);
         unlink($image2);
         unlink($image3);
+        unlink($image4);
         DB::table('subcategorypages')->where('id',$id)->delete();
         $notification=array(
                      'messege'=>'Successfully subcategorypages Deleted ',
@@ -163,8 +173,10 @@ class SubCategoryPageController extends Controller
         $data['selling_price']=$request->selling_price;
         $data['product_details']=$request->product_details;
         $data['video_link']=$request->video_link;
-        $data['single_image']=$request->single_image;
-        $data['product']=$request->product;
+        $data['image_1']=$request->image_1;
+         $data['image_2']=$request->image_2;
+        $data['product_1']=$request->product_1;
+        $data['product_2']=$request->product_2;
         
         $update=DB::table('subcategorypages')->where('id',$id)->update($data);
         if ($update) {
@@ -188,10 +200,12 @@ class SubCategoryPageController extends Controller
         $old_one=$request->old_one;
         $old_two=$request->old_two;
         $old_three=$request->old_three;
+        $old_four=$request->old_four;
 
         $image_one=$request->image_one;
         $image_two=$request->image_two;
         $image_three=$request->image_three;
+        $image_four=$request->image_four;
         $data=array();
 
         if($request->has('image_one')) {
@@ -226,6 +240,17 @@ class SubCategoryPageController extends Controller
            DB::table('subcategorypages')->where('id',$id)->update($data);
             $notification=array(
                      'messege'=>'Image Three Updated ',
+                     'alert-type'=>'success'
+                    );
+             return Redirect()->route('all.subcategorypages')->with($notification);
+         }if($request->has('image_four')) {
+           unlink($old_four);
+           $image_four_name= hexdec(uniqid()).'.'.$image_four->getClientOriginalExtension();
+           Image::make($image_four)->resize(300,300)->save('public/media/subcategorypage/'.$image_four_name);
+           $data['image_four']='public/media/subcategorypage/'.$image_four_name;
+           DB::table('subcategorypages')->where('id',$id)->update($data);
+            $notification=array(
+                     'messege'=>'Image One Updated ',
                      'alert-type'=>'success'
                     );
              return Redirect()->route('all.subcategorypages')->with($notification);
@@ -265,6 +290,33 @@ class SubCategoryPageController extends Controller
             $image_three_name= hexdec(uniqid()).'.'.$image_three->getClientOriginalExtension();
            Image::make($image_three)->resize(230,300)->save('public/media/subcategorypage/'.$image_three_name);
            $data['image_three']='public/media/subcategorypage/'.$image_three_name;
+            DB::table('subcategorypages')->where('id',$id)->update($data);
+            $notification=array(
+                     'messege'=>'Image One and Two Updated ',
+                     'alert-type'=>'success'
+                    );
+             return Redirect()->route('all.subcategorypages')->with($notification);
+          
+          }if($request->has('image_one') && $request->has('image_two') && $request->has('image_three') && $request->has('image_four') ){
+           unlink($old_one);
+           unlink($old_two);
+           unlink($old_three);
+           unlink($old_four);
+           $image_one_name= hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
+           Image::make($image_one)->resize(230,300)->save('public/media/subcategorypage/'.$image_one_name);
+           $data['image_one']='public/media/subcategorypage/'.$image_one_name;
+            
+           $image_two_name= hexdec(uniqid()).'.'.$image_two->getClientOriginalExtension();
+           Image::make($image_two)->resize(230,300)->save('public/media/subcategorypage/'.$image_two_name);
+           $data['image_two']='public/media/subcategorypage/'.$image_two_name;
+
+            $image_three_name= hexdec(uniqid()).'.'.$image_three->getClientOriginalExtension();
+           Image::make($image_three)->resize(230,300)->save('public/media/subcategorypage/'.$image_three_name);
+           $data['image_three']='public/media/subcategorypage/'.$image_three_name;
+
+            $image_four_name= hexdec(uniqid()).'.'.$image_four->getClientOriginalExtension();
+           Image::make($image_four)->resize(230,300)->save('public/media/subcategorypage/'.$image_four_name);
+           $data['image_four']='public/media/subcategorypage/'.$image_four_name;
             DB::table('subcategorypages')->where('id',$id)->update($data);
             $notification=array(
                      'messege'=>'Image One and Two Updated ',

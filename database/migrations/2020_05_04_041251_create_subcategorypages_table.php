@@ -29,11 +29,14 @@ class CreateSubcategorypagesTable extends Migration
             $table->string('selling_price')->nullable();
             $table->string('discount_price')->nullable();
             $table->string('video_link')->nullable();
-            $table->integer('single_image')->nullable();
-            $table->integer('product')->nullable();
+            $table->integer('image_1')->nullable();
+            $table->integer('image_2')->nullable();
+            $table->integer('product_1')->nullable();
+            $table->integer('product_2')->nullable();
             $table->string('image_one')->nullable();
             $table->string('image_two')->nullable();
             $table->string('image_three')->nullable();
+            $table->string('image_four')->nullable();
             $table->integer('status')->nullable();
             $table->timestamps();
         });
