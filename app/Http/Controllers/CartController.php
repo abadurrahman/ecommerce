@@ -94,7 +94,7 @@ class CartController extends Controller
 
     }
 
-     public function InsertCart(Request $request)
+    public function InsertCart(Request $request)
     {
          $id=$request->product_id;
           $product=DB::table('products')->where('id',$id)->first();
@@ -131,7 +131,6 @@ class CartController extends Controller
                        return Redirect()->back()->with($notification);
          }
     }
-
 
     public function Checkout()
     {

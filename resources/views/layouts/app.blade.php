@@ -1,4 +1,6 @@
-
+@php
+    $setting=DB::table('sitesetting')->first();
+@endphp
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -58,9 +60,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="header">
     <div class="container">
         <ul>
-            <li><span class="glyphicon glyphicon-time" aria-hidden="true"></span>+38 068 005 3570</li>
-           <li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="mailto:info@example.com">info@example.com</a></li>
-           <li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="mailto:info@example.com">info@example.com</a></li>
+            <li><span class="glyphicon glyphicon-time" aria-hidden="true"></span>{{$setting->phone_one}}</li>
+           <li><a href="#" data-toggle="modal" data-target="#exampleModal">My Order Traking</a></li>
+           <li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="mailto:info@example.com">{{$setting->email}}</a></li>
 
             
             
@@ -188,9 +190,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="col-md-4 sign-gd-two">
                     <h4>Store Information</h4>
                     <ul>
-                        <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Address : 1234k Avenue, 4th block, <span>Newyork City.</span></li>
-                        <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Email : <a href="mailto:info@example.com">info@example.com</a></li>
-                        <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Phone : +1234 567 567</li>
+                        <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Address : {{$setting->company_address}}.</span></li>
+                        <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Email : <a href="mailto:info@example.com">{{$setting->email}}</a></li>
+                        <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Phone : {{$setting->phone_one}}</li>
                     </ul>
                 </div>
                 <div class="col-md-4 sign-gd flickr-post">
@@ -304,5 +306,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
             </div>
 <!-- //login -->
+  <!-- Order Tracking Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Your Status Code</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                     <form method="post" action="{{ route('order.tracking') }}">
+                                         @csrf
+                                         <div class="form-row">
+                                              <label>Status Code</label>
+                                               <input type="text" name="code" required="" class="form-control" placeholder="Your Order Status Code">
+                                         </div><br>
+                                         <button class="btn btn-danger" type="submit">Track Now</button>                 
+                                     </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
 </body>
 </html>

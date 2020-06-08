@@ -26,7 +26,7 @@ class PaymentController extends Controller
     	 $data['city']=$request->city;
     	 $data['payment']=$request->payment;
 
-    	 if ($request->payment == 'stripe') {
+    	if ($request->payment == 'stripe') {
 
     	 	  //stripe payment pages
     	 	 return view('pages.payment.stripe',compact('data'));
@@ -42,7 +42,7 @@ class PaymentController extends Controller
     }
 
 
-/*
+
     public function STripeCharge(Request $request)
     {
 
@@ -50,7 +50,7 @@ class PaymentController extends Controller
     	   $total=$request->total;
             // Set your secret key: remember to change this to your live secret key in production
 			// See your keys here: https://dashboard.stripe.com/account/apikeys
-			\Stripe\Stripe::setApiKey('sk_test_5WJ51nwEzd74CXcWIfSGq6CV');
+			\Stripe\Stripe::setApiKey('sk_test_jhkBUyiVCWHZLec3mPy3Doju00Pj1eWAfq');
 
 			// Token is created using Checkout or Elements!
 			// Get the payment token ID submitted by the form:
@@ -59,7 +59,7 @@ class PaymentController extends Controller
 			$charge = \Stripe\Charge::create([
 			    'amount' => $total*100,
 			    'currency' => 'usd',
-			    'description' => 'Learn Hunter details',
+			    'description' => 'Learn your details',
 			    'source' => $token,
 			    'metadata' => ['order_id' => uniqid()],
 			]);
@@ -73,7 +73,7 @@ class PaymentController extends Controller
 			$data['shipping']=$request->shipping;
 			$data['vat']=$request->vat;
 			$data['total']=$request->total;
-            $data['payment_type']=$request->payment_type;
+      $data['payment_type']=$request->payment_type;
 			 if (Session::has('coupon')) {
 			 	 $data['subtotal']=Session::get('coupon')['balance'];
     	     }else{
@@ -85,7 +85,7 @@ class PaymentController extends Controller
     	    $data['year']=date('Y');
             $data['status_code']=mt_rand(100000,999999); 
     	    $order_id=DB::table('orders')->insertGetId($data);
-             Mail::to($email)->send(new invoiceMail($data)); //mail send to user
+            // Mail::to($email)->send(new invoiceMail($data)); //mail send to user
     	    // insert shipping details table
 
     	    	$shipping=array();
@@ -160,7 +160,7 @@ class PaymentController extends Controller
                                'alert-type'=>'success'
                          );
                  return Redirect()->back()->with($notification);
-    }*/
+    }
 
 
 }

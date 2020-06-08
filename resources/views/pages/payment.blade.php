@@ -149,13 +149,14 @@
 						<div class="shopper-info">
 							<p>Shipping Information</p>
 							<form action="{{route('payment.process')}}" method="post">
-								<input type="text" placeholder="Full Name" name="fullname">
-								<input type="text" placeholder="Address" name="address">
-								<input type="text" placeholder="City" name="city">
-								<input type="text" placeholder="Phone" name="phone">
-								<input type="text" placeholder="Email" name="email">
-								<input type="password" placeholder="Password" name="password">
-								<input type="password" placeholder="Confirm password" name="confirmpassword">
+								@csrf
+								<input type="text" placeholder="Full Name" name="name" required="">
+								<input type="text" placeholder="Address" name="address" required="">
+								<input type="text" placeholder="City" name="city" required="">
+								<input type="text" placeholder="Phone" name="phone" required="">
+								<input type="text" placeholder="Email" name="email" required="">
+								<input type="password" placeholder="Password" name="password" required="">
+								<input type="password" placeholder="Confirm password" name="confirmpassword" required="">
 								<h3 class="contact_form_title text-center">Payment By</h3>
                            <div class="form-group">
                                 <ul class="logos_list " >

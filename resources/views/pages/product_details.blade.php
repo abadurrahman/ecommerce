@@ -116,6 +116,9 @@
 					<div class="occasion-cart">
 					<a href="" class="item_add hvr-outline-out button2">Add to cart</a>
 					</div>
+					<br>
+								
+					<div class="sharethis-inline-share-buttons"></div>
     		       </div>
     		      </form>
 
@@ -125,7 +128,7 @@
 					<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 						<ul id="myTab" class="nav nav-tabs" role="tablist">
 							<li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Description</a></li>
-							<li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Reviews(1)</a></li>
+							<li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Reviews or Comments</a></li>
 							<li role="presentation" class="dropdown">
 								<a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown" aria-controls="myTabDrop1-contents">video/link <span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
@@ -140,34 +143,7 @@
 								<p>{{$product->product_details}}</p>
 							</div>
 							<div role="tabpanel" class="tab-pane fade bootstrap-tab-text" id="profile" aria-labelledby="profile-tab">
-								<div class="bootstrap-tab-text-grids">
-									<div class="bootstrap-tab-text-grid">
-										<div class="bootstrap-tab-text-grid-left">
-											<img src="images/men3.jpg" alt=" " class="img-responsive">
-										</div>
-										<div class="bootstrap-tab-text-grid-right">
-											<ul>
-												<li><a href="#">Admin</a></li>
-												<li><a href="#"><span class="glyphicon glyphicon-share" aria-hidden="true"></span>Reply</a></li>
-											</ul>
-											<p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis 
-												suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem 
-												vel eum iure reprehenderit.</p>
-										</div>
-										<div class="clearfix"> </div>
-									</div>
-									
-									<div class="add-review">
-										<h4>add a review</h4>
-										<form>
-											<input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
-											<input type="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-											
-											<textarea type="text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
-											<input type="submit" value="SEND">
-										</form>
-									</div>
-								</div>
+								<div class="fb-comments" data-href="{{Request::url()}}" data-numposts="8" data-width=""></div>
 							</div>
 							<div role="tabpanel" class="tab-pane fade bootstrap-tab-text" id="dropdown1" aria-labelledby="dropdown1-tab">
 								<p>{{$product->video_link}}</p>
@@ -179,4 +155,7 @@
 	</div>
 </div>
 
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0"></script>
+<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5eddc1d7c99ea3001204074d&product=inline-share-buttons&cms=sop' async='async'></script>
 @endsection

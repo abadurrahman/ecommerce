@@ -68,10 +68,13 @@ class ProductdetailsController extends Controller
 
     public function productsView($id)
     {
-         $products=DB::table('products')->where('subcategory_id',$id)->paginate(30);
-         $brands= DB::table('products')->where('subcategory_id',$id)->select('brand_id')->groupBy('brand_id')->get();
          
-         return view('pages.all_products',compact('products','brands'));
+         $product_one=DB::table('subcategorypages')->where('product_1',1)->orderBy('id','DESC')->where('subcategorypages.subcategory_id',$id)->get();
+          $product_two=DB::table('subcategorypages')->where('product_2',1)->orderBy('id','DESC')->where('subcategorypages.subcategory_id',$id)->get();
+
+       $brands= DB::table('subcategorypages')->where('subcategory_id',$id)->select('brand_id')->groupBy('brand_id')->get();
+       
+          return view('pages.product_by_subcategory',compact('product_one','product_two','brands'));
     }
 
 }
