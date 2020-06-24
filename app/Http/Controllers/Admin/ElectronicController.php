@@ -282,4 +282,8 @@ class ElectronicController extends Controller
         }
          return Redirect()->route('all.electronics');
     }
+
+
+
+    
 }

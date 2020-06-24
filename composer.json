@@ -15,6 +15,7 @@
         "laravel/framework": "^6.0",
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^1.0",
+        "spatie/laravel-backup": "^6.10",
         "stripe/stripe-php": "^7.36"
     },
     "require-dev": {

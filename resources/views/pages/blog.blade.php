@@ -36,13 +36,22 @@
     <script src="{{asset('public/alada/blog/js/vendor/modernizr-2.8.3.min.js')}}"></script>
 
 
+ @php 
+   
+    $main=DB::table('posts')->where('main',1)->orderBy('id','DESC')->get();
+    $latest=DB::table('posts')->where('latest_offer',1)->orderBy('id','DESC')->get();
+    
+@endphp
+
+
+
 
     <!--BLOG AREA-->
     <section class="blog-area blog-page section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
-                    @foreach($post as $row)
+                    @foreach($main as $row)
                     <div class="single-blog wow fadeIn">
                         <div class="blog-image">
                             <img src="{{asset($row->post_image)}}" alt="">
@@ -106,25 +115,18 @@
                                 <li><a href="#">Rail Freight</a></li>
                             </ul>
                         </div>
+
+
                         <div class="single-sidebar-widget widget_recent_entries">
                             <h4>Latest Post</h4>
                             <ul>
+                                @foreach($latest as $lat)
                                 <li>
-                                    <div class="alignleft"><img src="{{asset('public/alada/blog/img/blog/thumb-1.jpg')}}" alt=""></div>
+                                    <div class="alignleft"><img style="height: 90px; width: 120px;" src="{{asset($lat->post_image)}}" alt=""></div>
                                     <a href="#">2016 Latest News From Logistics Transportation Service.</a>
                                 </li>
-                                <li>
-                                    <div class="alignleft"><img src="{{asset('public/alada/blog/img/blog/thumb-2.jpg')}}" alt=""></div>
-                                    <a href="#">2016 Latest News From Logistics Cargo Service.</a>
-                                </li>
-                                <li>
-                                    <div class="alignleft"><img src="{{asset('public/alada/blog/img/blog/thumb-3.jpg')}}" alt=""></div>
-                                    <a href="#">2016 Latest News From Logistics Transportation Service.</a>
-                                </li>
-                                <li>
-                                    <div class="alignleft"><img src="{{asset('public/alada/blog/img/blog/thumb-4.jpg')}}" alt=""></div>
-                                    <a href="#">2016 Latest News From Logistics Cargo Service.</a>
-                                </li>
+                                @endforeach
+                
                             </ul>
                         </div>
                         <div class="single-sidebar-widget widget_tag_cloud">

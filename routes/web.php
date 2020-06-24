@@ -105,7 +105,7 @@ Route::get('admin/electronics/add', 'Admin\ElectronicController@create')->name('
 Route::post('admin/store/electronics', 'Admin\ElectronicController@Store')->name('store.electronics');
 Route::get('inactive/electronics/{id}','Admin\ElectronicController@Inactive'); 
 Route::get('active/electronics/{id}','Admin\ElectronicController@Active');
-Route::get('delete/electronics/{id}','Admin\ElectronicController@DeleteSlider');
+Route::get('delete/electronics/{id}','Admin\ElectronicController@DeleteElectronic');
 Route::get('view/electronics/{id}','Admin\ElectronicController@ViewElectronics');
 Route::get('edit/electronics/{id}','Admin\ElectronicController@EditElectronics');
 Route::post('update/electronics/withoutphoto/{id}','Admin\ElectronicController@UpdateElectronicWithoutPhoto');
@@ -177,6 +177,8 @@ Route::post('admin/update/sitesetting', 'Admin\SettingController@UpdateSetting')
 Route::get('admin/database/backup', 'Admin\SettingController@DatabaseBackup')->name('admin.database.backup');
 Route::get('admin/database/backup/now', 'Admin\SettingController@BackupNow')->name('admin.backup.now');
 Route::get('delete/database/{getFilename}', 'Admin\SettingController@DeleteDatabase');  
+Route::get('getFilename', 'Admin\SettingController@DownloadDatabase');
+
 
 
 
@@ -186,7 +188,7 @@ Route::get('delete/database/{getFilename}', 'Admin\SettingController@DeleteDatab
  Route::get('admin/all/return', 'Admin\ReturnController@AllReturn')->name('admin.all.return');
 
  Route::post('order/tracking', 'FrontController@OrderTracking')->name('order.tracking');
- Route::post('product/search', 'FrontController@ProductSearch')->name('product.search');
+ Route::post('product/search', 'FrontendController@ProductSearch')->name('product.search');
 
 
 
@@ -252,3 +254,10 @@ Route::get('/products/{id}', 'ProductdetailsController@productsView');
  Route::post('order/tracking', 'FrontendController@OrderTracking')->name('order.tracking');
 
 
+
+//electronics
+
+Route::get('product/electronics','ElectronicPageController@Electronic')->name('product.electronics');
+
+
+Route::get('/contact','ContactController@Contact')->name('contact');

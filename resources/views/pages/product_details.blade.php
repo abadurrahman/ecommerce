@@ -158,4 +158,8 @@
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0"></script>
 <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5eddc1d7c99ea3001204074d&product=inline-share-buttons&cms=sop' async='async'></script>
+<!-- single -->
+<script src="{{asset('public/frontend/js/imagezoom.js')}}"></script>
+<script src="{{asset('public/frontend/js/jquery.flexslider.js')}}"></script>
+<!-- single -->
 @endsection

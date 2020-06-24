@@ -1,16 +1,11 @@
 @php
     $setting=DB::table('sitesetting')->first();
 @endphp
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <!DOCTYPE html>
 <html>
 <head>
-<title>Smart Shop a Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+<title>Smart Shop</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -20,6 +15,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
 <link href="{{asset('public/frontend/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
+<link href="{{asset('public/frontend/css/flexslider.css')}}" rel="stylesheet" type="text/css" media="all" /> 
+<link href="{{asset('public/frontend/css/jquery-ui.css')}}" rel="stylesheet" type="text/css" media="all" />
 <!-- pignose css -->
 <link href="{{asset('public/frontend/css/pignose.layerslider.css')}}" rel="stylesheet" type="text/css" media="all" />
 
@@ -28,8 +25,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <!-- //pignose css -->
 <link href="{{asset('public/frontend/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet" href="sweetalert2.min.css">
-<!-- js -->
+<link rel="stylesheet" href="sweetalert2.min.css"><!-- js -->
 <script type="text/javascript" src="{{asset('public/frontend/js/jquery-2.1.4.min.js')}}"></script>
 <!-- //js -->
 <!-- cart -->
@@ -46,11 +42,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 <!-- //details -->
-<link rel="stylesheet" href="{{asset('public/frontend/css/flexslider.css')}}" type="text/css" media="screen" />
-<!-- single -->
-<script src="{{asset('public/frontend/js/imagezoom.js')}}"></script>
-<script src="{{asset('public/frontend/js/jquery.flexslider.js')}}"></script>
-<!-- single -->
+ <link rel="stylesheet" href="{{asset('public/frontend/css/flexslider.css')}}" type="text/css" media="screen" /> 
+
 
 
 
@@ -62,10 +55,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <ul>
             <li><span class="glyphicon glyphicon-time" aria-hidden="true"></span>{{$setting->phone_one}}</li>
            <li><a href="#" data-toggle="modal" data-target="#exampleModal">My Order Traking</a></li>
-           <li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="mailto:info@example.com">{{$setting->email}}</a></li>
-
-            
-            
+           <li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="mailto:info@example.com">{{$setting->email}}</a></li>            
         </ul>
     </div>
 
@@ -83,9 +73,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <h1><a href="{{url('/')}}"><img src="{{asset('public/frontend/images/logo3.jpg')}}"></a></h1>
         </div>
         <div class="col-md-6 header-middle">
-            <form>
+            <form action="{{ route('product.search') }}" method="post">
+                @csrf
                 <div class="search">
-                    <input type="search" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required="">
+                    <input type="search" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required="" name="search">
                 </div>
                 <div class="section_room">
                     <select id="country" onchange="change_country(this.value)" class="frm-field required">
@@ -120,6 +111,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
 </div>
 <!-- //header-bot -->
+
 
 @yield('content')
 

@@ -51,7 +51,8 @@
                </div>
                <div class="col-4">
                  <div class="card" style="width: 18rem;">
-                  <img src="{{ asset('public/avatar.jpg') }}" class="card-img-top" style="height: 90px; width: 90px; margin-left: 34%;" >
+                  <img src="{{ asset('public/avatar.jpg') }}" class="card-img-top" style="height: 90px; width: 90px; margin-left: 34%;" ></div>
+                  <br>
                   <div class="card-body">
                     <h5 class="card-title text-center">{{ Auth::user()->name }}</h5>
                   </div>

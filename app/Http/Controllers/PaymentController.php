@@ -85,7 +85,7 @@ class PaymentController extends Controller
     	    $data['year']=date('Y');
             $data['status_code']=mt_rand(100000,999999); 
     	    $order_id=DB::table('orders')->insertGetId($data);
-            // Mail::to($email)->send(new invoiceMail($data)); //mail send to user
+           Mail::to($email)->send(new invoiceMail($data)); //mail send to user
     	    // insert shipping details table
 
     	    	$shipping=array();

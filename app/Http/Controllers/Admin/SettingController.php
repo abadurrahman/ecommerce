@@ -47,6 +47,14 @@ class SettingController extends Controller
           return view('admin.setting.db_backup')->with('files', File::allFiles('storage/app/Laravel'));
     }
 
+
+    public function DownloadDatabase($getFilename)
+    {
+      $path=storage_path('app\Laravel/'.$getFilename);
+      return response()->download($path);
+    }
+
+
     public function BackupNow()
     {
          \Artisan::call('backup:run');
@@ -56,6 +64,7 @@ class SettingController extends Controller
                   );    
         return Redirect()->back()->with($notification);      
     }
+
 
     public function DeleteDatabase($getFilename)
     {

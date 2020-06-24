@@ -31,15 +31,34 @@
                                         <a href="mens.html"><img src="{{asset('public/frontend/images/woo1.jpg')}}" alt=" "/></a>
                                     </div>
                                     <div class="col-sm-3 multi-gd-img">
+                                        <div>
+                                            Subcat-1
+                                        </div>
                                         <ul class="multi-column-dropdown">
                                             @php  
-                                                $subcategory=DB::table('subcategories')->where('category_id',$cat->id)->get();
+                                                $subcategory=DB::table('subcategories')->where('category_id',$cat->id)->where('subcat_1',1)->get();
                                             @endphp
 
                                             @foreach($subcategory as $row)
                                             <li><a href="{{ url('products/'.$row->id) }}">{{  $row->subcategory_name }}</a></li>
                                             @endforeach
                                         </ul>
+
+                                    </div>
+                                    <div class="col-sm-3 multi-gd-img">
+                                        <div>
+                                            Subcat-1
+                                        </div>
+                                        <ul class="multi-column-dropdown">
+                                             @php  
+                                                $subcategory=DB::table('subcategories')->where('category_id',$cat->id)->where('subcat_2',1)->get();
+                                            @endphp
+
+                                            @foreach($subcategory as $row)
+                                            <li><a href="{{ url('products/'.$row->id) }}">{{  $row->subcategory_name }}</a></li>
+                                            @endforeach
+                                        </ul>
+                                        
                                     </div>
                                     
                                     <div class="clearfix"></div>
@@ -48,9 +67,9 @@
                     </li>
                     @endforeach  
                     
-                    <li class=" menu__item"><a class="menu__link" href="electronics.html">Electronics</a></li>
+                    <li class=" menu__item"><a class="menu__link" href="{{route('product.electronics')}}">Electronics</a></li>
                     <li class=" menu__item"><a class="menu__link" href="{{route('blog.post')}}">Blog</a></li>
-                    <li class=" menu__item"><a class="menu__link" href="contact.html">contact</a></li>
+                    <li class=" menu__item"><a class="menu__link" href="{{route('contact')}}">contact</a></li>
                   </ul>
                 </div>
               </div>
@@ -79,18 +98,18 @@
     $main_two=DB::table('sliders')->where('main_slider_two',1)->orderBy('id','DESC')->first();
 @endphp
 
-<!-- banner -->
+<!-- banner
 <div class="banner-grid">
     <div id="visual">
             <div class="slide-visual">
-                <!-- Slide Image Area (1000 x 424) -->
+                Slide Image Area (1000 x 424)
                 <ul class="slide-group">
                     <li><img style="height: 600px; width: 1000px;"  class="img-responsive" src="{{asset($main_one->image_one)}}" alt="Dummy Image" /></li>
                     <li><img style="height: 600px; width: 1000px;" class="img-responsive" src="{{asset($main_one->image_two)}}" alt="Dummy Image" /></li>
                     <li><img style="height: 600px; width: 1000px;" class="img-responsive" src="{{asset($main_one->image_three)}}" alt="Dummy Image" /></li>
                 </ul>
 
-                <!-- Slide Description Image Area (316 x 328) -->
+                Slide Description Image Area (316 x 328)
                 <div class="script-wrap">
                     <ul class="script-group">
                         <li><div class="inner-script"><img style="height: 285px; width: 276px;" class="img-responsive" src="{{asset($main_two->image_one)}}" alt="Dummy Image" /></div></li>
@@ -123,4 +142,4 @@
     </script>
 
 </div>
-<!-- //banner -->
+//banner -->

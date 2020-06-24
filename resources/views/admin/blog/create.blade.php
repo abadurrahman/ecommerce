@@ -112,8 +112,19 @@
                 <img src="#" id="one" >
               </label>
               </div>
-             
-            </div>
+          </div>
+           <div class="col-lg-4">
+                <label class="ckbox">
+            <input type="checkbox" name="main" value="1">
+            <span>Main</span>
+          </label>
+              </div>
+            <div class="col-lg-4">
+                <label class="ckbox">
+            <input type="checkbox" name="latest_offer" value="1">
+            <span>Latest Offer</span>
+          </label>
+              </div>
             <hr>
           
             <div class="form-layout-footer">

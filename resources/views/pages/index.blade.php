@@ -44,7 +44,7 @@
                     </div>
                     <div class="mid-text">
                         <h4>up to 40% <span>off</span></h4>
-                        <a class="hvr-outline-out button2" href="product.html">Shop now </a>
+                        <a href="#" id="{{ $new_one->id }}" class="product_cart_button item_add single-item hvr-outline-out button2 addcart" data-toggle="modal" data-target="#cartmodal"  onclick="productview(this.id)">Shop now</a>
                     </div>
                     <div class="clearfix"></div>
                 </div>

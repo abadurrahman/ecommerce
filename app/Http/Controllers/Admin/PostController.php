@@ -33,6 +33,8 @@ class PostController extends Controller
         $data['details_bn']=$request->details_bn;
         $data['details_cn']=$request->details_cn;
         $data['details_hn']=$request->details_hn;
+        $data['main']=$request->main;
+        $data['latest_offer']=$request->latest_offer;
 
         $post_image=$request->file('post_image');
         if ($post_image) {
@@ -92,6 +94,8 @@ class PostController extends Controller
         $data['category_id']=$request->category_id;
         $data['details_en']=$request->details_en;
         $data['details_bn']=$request->details_bn;
+        $data['main']=$request->main;
+        $data['latest_offer']=$request->latest_offer;
         $post_image=$request->file('post_image');
          if ($post_image) {
                 unlink($oldimage);

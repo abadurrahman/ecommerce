@@ -67,7 +67,7 @@
               <div class="modal-body pd-20">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Sub-Category Name</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Category" name="subcategory_name">
+                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Sub-cat" name="subcategory_name">
                 </div>
                  <div class="form-group">
                   <label for="exampleInputEmail1">Category </label>
@@ -77,6 +77,22 @@
                   	@endforeach
                   </select>
                 </div>
+
+                <div class="col-lg-4">
+                <label class="ckbox">
+                 <input type="checkbox" name="subcat_1" value="1">
+                <span>Subcat-1</span>
+                </label>
+              </div>
+
+              <div class="col-lg-4">
+                <label class="ckbox">
+                 <input type="checkbox" name="subcat_2" value="1">
+                <span>Subcat-2</span>
+                </label>
+              </div>
+
+
               </div><!-- modal-body -->
               <div class="modal-footer">
                 <button type="submit" class="btn btn-info pd-x-20">Submit</button>

@@ -25,6 +25,7 @@ class CreatePostsTable extends Migration
             $table->text('details_bn')->nullable();
             $table->text('details_cn')->nullable();
             $table->text('details_hn')->nullable();
+            $table->string('latest_offer')->nullable();
             $table->timestamps();
         });
     }

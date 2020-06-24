@@ -197,11 +197,14 @@ class CategoryController extends Controller
     	$validatedData = $request->validate([
          'category_id' => 'required',
          'subcategory_name' => 'required|',
+
         ]);
 
         $data=array();
         $data['category_id']=$request->category_id;
         $data['subcategory_name']=$request->subcategory_name;
+        $data['subcat_1']=$request->subcat_1;
+        $data['subcat_2']=$request->subcat_2;
         DB::table('subcategories')->insert($data);
             $notification=array(
                 'messege'=>'Sub Category Inserted',
@@ -233,6 +236,8 @@ class CategoryController extends Controller
     	$data=array();
         $data['category_id']=$request->category_id;
         $data['subcategory_name']=$request->subcategory_name;
+        $data['subcat_1']=$request->subcat_1;
+        $data['subcat_2']=$request->subcat_2;
         DB::table('subcategories')->where('id',$id)->update($data);
             $notification=array(
                 'messege'=>'Sub Category Updated',
