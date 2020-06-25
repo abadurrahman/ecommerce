@@ -14,7 +14,7 @@
           <div class="table-wrapper">
             <table id="datatable1" class="table display responsive nowrap">
 
-              <thead>
+              <thead col-sm-4>
                 <tr>
                   <th class="wd-15p">Product ID</th>
                   <th class="wd-15p">Product Name</th>

@@ -12,16 +12,16 @@
           <div class="table-wrapper">
             <table id="datatable1" class="table display responsive nowrap">
               <thead>
-                <tr>
-                  <th class="wd-15p">Payment Type</th>
-                 
-            
+                <div class="row">
+                <tr col-sm-4>
+                  <th class="wd-15p">Payment Type</th>            
                   <th class="wd-20p">Shipping</th>
                   <th class="wd-20p">Total</th>
                    <th class="wd-20p">Date</th>
                    <th class="wd-20p">Status</th>
                    <th class="wd-20p">Action</th>
                 </tr>
+              </div>
               </thead>
               <tbody>
                 @foreach($order as $row)
